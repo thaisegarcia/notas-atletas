@@ -19,10 +19,19 @@ let atletas = [
 
 atletas.forEach(function (atleta) {
   let total = 0;
+  let maiorNota = 0;
+  let menorNota = 1000;
   atleta.notas.forEach(function (n) {
     total = total + n;
+    if(maiorNota < n){
+      maiorNota = n;
+    }
+    if (menorNota > n){
+      menorNota = n;
+    }
   });
-  let media = total / atleta.notas.length;
+  total = total - maiorNota - menorNota;
+  let media = total / (atleta.notas.length - 2);
   console.log("Atleta: " + atleta.nome);
   console.log("Notas Obtidas: " + atleta.notas);
   console.log("Média Válida: " + media);
